@@ -20,7 +20,7 @@ const Courses = () => {
 
 
     return (
-        <div>
+        <div className='mx-auto'>
             <h1> this is Courses: {categories.length}</h1>
 
             <div>

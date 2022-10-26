@@ -68,8 +68,8 @@ const Header = () => {
                             <Nav.Link data-tip={user?.displayName}>{user?.photoURL ?
                                 <Image style={{ height: '30px' }} roundedCircle src={user?.photoURL} ></Image> : <FaUser></FaUser>
                             } </Nav.Link>
-                            <ReactTooltip />
 
+                            <ReactTooltip />
 
 
 
