@@ -13,7 +13,15 @@ import ReactTooltip from 'react-tooltip';
 
 const Header = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
 
     return (
         <div>
@@ -36,14 +44,33 @@ const Header = () => {
                             <Nav.Link> <Link to='/courses' style={{ textDecoration: 'none' }} >Courses</Link></Nav.Link>
                             <Nav.Link><Link to='/faq' style={{ textDecoration: 'none' }} >FAQ</Link></Nav.Link>
                             <Nav.Link> <Link to='/blog' style={{ textDecoration: 'none' }} >Blog</Link></Nav.Link>
-                            <Nav.Link><Link to='/login' style={{ textDecoration: 'none' }} >Login</Link></Nav.Link>
-                            {/* <Nav.Link data-tip={user?.displayName} >{user?.displayName}</Nav.Link> */}
-                            <Nav.Link data-tip={user?.displayName}>{user.photoURL ?
-                                <Image style={{ height: '30px' }} roundedCircle src={user.photoURL} ></Image> : <FaUser></FaUser>
+
+
+                            <Nav.Link data-tip={user?.displayName} >
+                                {
+                                    user?.uid ?
+                                        <>
+
+
+                                            <Nav.Link onClick={handleLogOut}> <Link style={{ textDecoration: 'none' }} >Log Out</Link></Nav.Link>
+
+                                        </>
+
+                                        :
+                                        <>
+                                            <Link to='/login'> Login </Link>
+
+                                        </>
+                                }
+
+                            </Nav.Link>
+
+                            <Nav.Link data-tip={user?.displayName}>{user?.photoURL ?
+                                <Image style={{ height: '30px' }} roundedCircle src={user?.photoURL} ></Image> : <FaUser></FaUser>
                             } </Nav.Link>
-
-
                             <ReactTooltip />
+
+
 
 
                         </Nav>
