@@ -1,10 +1,10 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Course from './Course';
 import Image from 'react-bootstrap/Image'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card, CardGroup, Nav } from 'react-bootstrap';
 
 const Category = () => {
 
@@ -38,10 +38,11 @@ const Category = () => {
 
                             </Card.Body>
                             <Card.Footer className="text-muted">2 days ago</Card.Footer>
+
                         </Card>
 
 
-
+                        <Nav.Link> <Link to='/premium' style={{ textDecoration: 'none' }} >Premium</Link></Nav.Link>
 
 
 

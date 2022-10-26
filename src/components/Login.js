@@ -2,14 +2,24 @@ import { Button, Nav } from 'react-bootstrap';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
-import { ButtonGroup } from 'react-bootstrap';
+
 import Authprovider, { AuthContext } from '../context/Authprovider/Authprovider';
 import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+
+
 const Login = () => {
 
+
+    const [error, setError] = useState('');
     const { signIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -21,9 +31,15 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset()
+                setError('')
+                navigate(from, { replace: true });
 
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+
+                console.error(error)
+                setError(error.message);
+            })
 
 
 
@@ -63,7 +79,7 @@ const Login = () => {
                 </Button>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
+                        {error}
                     </Form.Text>
                 </Form.Group>
                 <p>New in this site  <Link to='/register' style={{ textDecoration: 'none' }} >Register Here</Link></p>
@@ -72,7 +88,7 @@ const Login = () => {
 
             <Stack gap={2} className="col-md-5 mx-auto">
                 <Button onClick={handleGoogleSignIn} variant="secondary">Sign-in With Google</Button>
-                <Button variant="secondary">Cancel</Button>
+
             </Stack>
         </div>
     );

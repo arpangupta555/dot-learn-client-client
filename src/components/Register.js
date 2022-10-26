@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
@@ -8,6 +8,7 @@ import { AuthContext } from '../context/Authprovider/Authprovider';
 
 
 const Register = () => {
+    const [error, setError] = useState('');
     const { createUser } = useContext(AuthContext);
     const handleSubmit = event => {
 
@@ -27,10 +28,15 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset()
+                setError('')
 
             })
 
-            .catch(e => console.error(e))
+            .catch(error => {
+
+                console.error(error)
+                setError(error.message);
+            })
 
     }
 
@@ -59,6 +65,11 @@ const Register = () => {
             <Button variant="primary" type="submit">
                 Submit
             </Button>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Text className="text-muted">
+                    {error}
+                </Form.Text>
+            </Form.Group>
 
             <p>Have an Account? <Link to='/login' style={{ textDecoration: 'none' }} >Please sign-in</Link></p>
 
