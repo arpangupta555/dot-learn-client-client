@@ -31,7 +31,7 @@ const Category = () => {
 
 
                             <Card className="text-center" >
-                                <Card.Header>Course Name:{course.title}</Card.Header>
+                                <Card.Header> <h1>Course Name:{course.title}</h1> </Card.Header>
                                 <Card.Body>
 
 
@@ -46,7 +46,14 @@ const Category = () => {
 
 
                                 </Card.Body>
-                                <Card.Footer className="text-muted">{course.details}</Card.Footer>
+
+                                <div> </div>
+                                <Card.Footer className="text-muted"><h5>{course.details} </h5></Card.Footer>
+                                <Card.Footer className="text-muted">
+                                    <h5> Course Duration: {course.duration}</h5>
+                                    <h5>Course Cost: {course.price}</h5>
+                                    <h5>Rating: {course.rating.number} </h5>
+                                </Card.Footer>
 
                             </Card>
 
