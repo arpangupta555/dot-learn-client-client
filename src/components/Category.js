@@ -16,63 +16,67 @@ const Category = () => {
 
     const course = useLoaderData();
     return (
-        <div className='mx-5 my-5 p-5' ref={ref}>
 
-            {
-                <div>
+        <div><h3 className='text-center mt-3'>Course Details</h3>
 
-                    {course.map(course => <div>
+            <div className='mx-5 my-5 p-5' ref={ref}>
 
+                {
+                    <div className='d-block'>
 
-
-
-
-                        <Card className="text-center" >
-                            <Card.Header>Course Name:{course.title}</Card.Header>
-                            <Card.Body>
-
-
-                                <div>
-                                    <Image
-                                        fluid
-                                        className='me-2'
-                                        src={course.image_url}
-                                        style={{ height: '250px' }}
-                                    ></Image>
-                                </div>
-
-
-                            </Card.Body>
-                            <Card.Footer className="text-muted">2 days ago</Card.Footer>
-
-                        </Card>
-
-
-                        <Nav.Link> <Link to='/premium' style={{ textDecoration: 'none' }} >Premium</Link></Nav.Link>
+                        {course.map(course => <div>
 
 
 
 
 
+                            <Card className="text-center" >
+                                <Card.Header>Course Name:{course.title}</Card.Header>
+                                <Card.Body>
+
+
+                                    <div>
+                                        <Image
+                                            fluid
+                                            className='me-2'
+                                            src={course.image_url}
+                                            style={{ height: '250px' }}
+                                        ></Image>
+                                    </div>
+
+
+                                </Card.Body>
+                                <Card.Footer className="text-muted">{course.details}</Card.Footer>
+
+                            </Card>
+
+                            <div className='mt-1 d-flex justify-content-center '>
+                                <Nav.Link> <Link class="btn btn-success text-white my-2  " to='/premium' style={{ textDecoration: 'none' }} >Get premium access</Link></Nav.Link>
+                            </div>
 
 
 
-                    </div>)}
+
+
+
+
+                        </div>)}
+                    </div>
+
+                }
+
+                <div className="App">
+                    <Pdf targetRef={ref} filename="code-example.pdf">
+                        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+                    </Pdf>
+                    <div >
+
+
+                    </div>
                 </div>
 
-            }
+            </div></div>
 
-            <div className="App">
-                <Pdf targetRef={ref} filename="code-example.pdf">
-                    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-                </Pdf>
-                <div >
-
-
-                </div>
-            </div>
-
-        </div>
     );
 };
 

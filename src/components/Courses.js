@@ -45,7 +45,7 @@ const Courses = () => {
                         <div>
 
                             {
-                                categories.map(category => <div key={category.id}>
+                                categories.map(category => <div className='mt-1 d-flex justify-content-center ' key={category.id}>
 
 
 
@@ -53,16 +53,16 @@ const Courses = () => {
                                     <Row xs={1} md={2} className="g-4">
                                         {Array.from({ length: 1 }).map((_, idx) => (
                                             <Col>
-                                                <Card>
+                                                <Card >
 
-                                                    <Card.Body>
-                                                        <Card.Title>{category.name}</Card.Title>
+                                                    <Card.Body className='mt-1 justify-content-center align-items-center ' >
+                                                        <Card.Title className='mt-1 d-flex justify-content-center '>{category.name}</Card.Title>
                                                         <Card.Text>
                                                             This is a longer card with supporting text below as a natural
                                                             lead-in to additional content. This content is a little bit
                                                             longer.
                                                         </Card.Text>
-                                                        <div>
+                                                        <div className='mt-1 d-flex justify-content-center '>
                                                             <Image
                                                                 fluid
                                                                 className='me-2'
