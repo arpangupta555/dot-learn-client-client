@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -9,9 +9,32 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/Authprovider/Authprovider';
 import { FaUser } from 'react-icons/fa';
 import ReactTooltip from 'react-tooltip';
+import ToggleButton from 'react-bootstrap';
 
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+
+
+function simulateNetworkRequest() {
+    return new Promise((resolve) => setTimeout(resolve, 2000));
+}
 
 const Header = () => {
+
+
+
+    const [isLoading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (isLoading) {
+            simulateNetworkRequest().then(() => {
+                setLoading(false);
+            });
+        }
+    }, [isLoading]);
+
+    const handleClick = () => setLoading(true);
 
     const { user, logOut } = useContext(AuthContext)
 
@@ -75,8 +98,22 @@ const Header = () => {
 
                         </Nav>
                     </Navbar.Collapse>
+
                 </Container>
+
+                <Button className='mx-auto'
+                    variant="primary"
+                    disabled={isLoading}
+                    onClick={!isLoading ? handleClick : null}
+                >
+                    {isLoading ? 'Loading…' : 'Click to Toggle'}
+                </Button>
+
+
+
             </Navbar>
+
+
         </div>
     );
 };
