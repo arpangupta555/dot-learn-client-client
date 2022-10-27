@@ -27,12 +27,14 @@ const Courses = () => {
 
                 <Row>
                     <Col lg="3">
-
+                        <h4>Courses Name</h4>
                         <div>
                             {
-                                categories.map(category => <p key={category.id}>
-                                    <Link to={`/category/${category.id}`}> {category.name} </Link>
-                                </p>)
+                                categories.map(category => <div key={category.id} className='mt-1' >
+                                    <button type="button" class="btn btn-outline-primary">
+                                        <Link style={{ textDecoration: 'none' }} to={`/category/${category.id}`} > {category.name} </Link></button>
+                                </div>)
+
                             }
 
                         </div>
@@ -60,9 +62,19 @@ const Courses = () => {
                                                             lead-in to additional content. This content is a little bit
                                                             longer.
                                                         </Card.Text>
+                                                        <div>
+                                                            <Image
+                                                                fluid
+                                                                className='me-2'
+                                                                src={category.image_url}
+                                                                style={{ height: '250px' }}
+                                                            ></Image>
+                                                        </div>
+                                                        <div className='mt-1 d-flex justify-content-center '><button type="button" class="btn btn-success text-white "><Link class="text-white " style={{ textDecoration: 'none' }} to={`/category/${category.id}`}> More Details </Link></button></div>
+
                                                     </Card.Body>
                                                 </Card>
-                                                <button><Link to={`/category/${category.id}`}> More Details </Link></button>
+
                                             </Col>
                                         ))}
                                     </Row>

@@ -30,7 +30,7 @@ const Category = () => {
                         <Card className="text-center" >
                             <Card.Header>Course Name:{course.title}</Card.Header>
                             <Card.Body>
-                                <Card.Title></Card.Title>
+
 
                                 <div>
                                     <Image
