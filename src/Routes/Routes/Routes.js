@@ -11,6 +11,7 @@ import Register from "../../components/Register";
 import Premium from "../../components/Premium";
 import PrivateRoute from "./PrivateRoute";
 
+
 export const routes = createBrowserRouter([
 
     {
@@ -82,6 +83,14 @@ export const routes = createBrowserRouter([
                 path: '/category/:id',
                 element: <Category></Category>,
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+
+
+            },
+            {
+
+                path: '/premium',
+                element: <Premium></Premium>,
+
 
 
             },

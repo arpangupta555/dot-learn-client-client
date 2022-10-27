@@ -47,14 +47,14 @@ const Category = () => {
 
                                 </Card.Body>
 
-                                <div> </div>
-                                <Card.Footer className="text-muted"><h5>{course.details} </h5></Card.Footer>
-                                <Card.Footer className="text-muted">
-                                    <h5> Course Duration: {course.duration}</h5>
-                                    <h5>Course Cost: {course.price}</h5>
-                                    <h5>Rating: {course.rating.number} </h5>
-                                </Card.Footer>
-
+                                <div>
+                                    <Card.Footer className="text-muted"><h5>{course.details} </h5></Card.Footer>
+                                    <Card.Footer className="text-muted">
+                                        <h5> Course Duration: {course.duration}</h5>
+                                        <h5>Course Cost: {course.price}</h5>
+                                        <h5>Rating: {course.rating.number} </h5>
+                                    </Card.Footer>
+                                </div>
                             </Card>
 
                             <div className='mt-1 d-flex justify-content-center '>
