@@ -9,7 +9,7 @@ const Home = () => {
                 <Row>
                     <Col lg="6">
 
-                        <div> <img src="https://www.moople.in/blog/wp-content/uploads/2021/05/h1-1.jpg" class="img-fluid" alt="Responsive image" />
+                        <div> <img src="https://i.ibb.co/wshrPFN/web-dev.gif" class="img-fluid" alt="Responsive image" />
                         </div>
 
                     </Col>

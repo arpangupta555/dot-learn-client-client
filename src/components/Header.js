@@ -9,11 +9,11 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/Authprovider/Authprovider';
 import { FaUser } from 'react-icons/fa';
 import ReactTooltip from 'react-tooltip';
-import ToggleButton from 'react-bootstrap';
 
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+
+
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+
 
 
 function simulateNetworkRequest() {
@@ -34,7 +34,7 @@ const Header = () => {
         }
     }, [isLoading]);
 
-    const handleClick = () => setLoading(true);
+
 
     const { user, logOut } = useContext(AuthContext)
 
@@ -44,10 +44,7 @@ const Header = () => {
             .then(() => { })
             .catch(error => console.error(error))
     }
-    function myFunction() {
-        var element = document.body;
-        element.classList.toggle("dark-mode");
-    }
+
 
     return (
         <div>

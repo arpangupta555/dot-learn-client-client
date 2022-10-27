@@ -1,8 +1,8 @@
-import { Button } from 'bootstrap';
+
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Card, CardGroup, Container } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
 import Col from 'react-bootstrap/Col';
@@ -58,9 +58,8 @@ const Courses = () => {
                                                     <Card.Body className='mt-1 justify-content-center align-items-center ' >
                                                         <Card.Title className='mt-1 d-flex justify-content-center '>{category.name}</Card.Title>
                                                         <Card.Text>
-                                                            This is a longer card with supporting text below as a natural
-                                                            lead-in to additional content. This content is a little bit
-                                                            longer.
+                                                            {category.details.length > 200 ?
+                                                                <p> {category.details.slice(0, 200) + '...'}</p> : <p>{category.details}</p>}
                                                         </Card.Text>
                                                         <div className='mt-1 d-flex justify-content-center '>
                                                             <Image
@@ -70,7 +69,8 @@ const Courses = () => {
                                                                 style={{ height: '250px' }}
                                                             ></Image>
                                                         </div>
-                                                        <div className='mt-1 d-flex justify-content-center '><button type="button" class="btn btn-success text-white "><Link class="text-white " style={{ textDecoration: 'none' }} to={`/category/${category.id}`}> More Details </Link></button></div>
+                                                        <div className='mt-1 d-flex justify-content-center '><button type="button" class="btn btn-success text-white ">
+                                                            <Link class="text-white " style={{ textDecoration: 'none' }} to={`/category/${category.id}`}> More Details </Link></button></div>
 
                                                     </Card.Body>
                                                 </Card>
@@ -78,20 +78,6 @@ const Courses = () => {
                                             </Col>
                                         ))}
                                     </Row>
-
-
-                                    {/* <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={category.image_url} />
-            <Card.Body>
-                <Card.Title>{category.name}</Card.Title>
-                <Card.Text>
-                    {category.details}
-                </Card.Text>
-                <button><Link to={`/category/${category.id}`}> More Details </Link></button>
-            </Card.Body>
-        </Card> */}
-
-
 
 
 
