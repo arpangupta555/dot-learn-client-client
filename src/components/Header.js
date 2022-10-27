@@ -44,7 +44,10 @@ const Header = () => {
             .then(() => { })
             .catch(error => console.error(error))
     }
-
+    function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
 
     return (
         <div>
@@ -94,20 +97,19 @@ const Header = () => {
 
                             <ReactTooltip />
 
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
 
+                            </div>
 
                         </Nav>
+
+
                     </Navbar.Collapse>
 
                 </Container>
 
-                <Button className='mx-auto'
-                    variant="primary"
-                    disabled={isLoading}
-                    onClick={!isLoading ? handleClick : null}
-                >
-                    {isLoading ? 'Loading…' : 'Click to Toggle'}
-                </Button>
+
 
 
 
